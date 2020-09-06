@@ -36,10 +36,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :profile
       t.string :profile_image
-      t.integer :level
-      t.integer :experience
-      t.boolean :is_delete, default: false
-      
+      t.integer :user_level, default: 1
+      t.integer :experience, default: 0
       # ---------------------
       t.timestamps null: false
     end

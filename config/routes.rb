@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'posts/new'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/comfirm'
-  get 'home/top'
-  get 'home/about'
-  devise_for :users
+
+   devise_for :users
+  # root 'posts/index'
+
+  # resources :users, only: [:show, :edit, :update]
+  # resources :posts, only: [:new, :create, :index, :show, :edit, :update] do
+  #   resources :comments, only: [:create, :destroy]
+  #   resource :favorites, only: [:create, :destroy]
+  # end
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
