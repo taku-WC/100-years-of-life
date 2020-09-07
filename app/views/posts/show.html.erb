@@ -1,2 +1,38 @@
 <h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
+<% @post.post%>
+<% @post.user_id%>
+      <% @post.comments.each do |comment|%>
+          <%# コメントしたユーザー情報 %>
+          <div class="comment-profile">
+            <%= link_to user_path(comment.user) do %>
+              <% attachment_image_tag comment.user, :profile-image, fallback: "no_image.jpg", size: "50x50" %>
+            <% end %>
+            <%= comment.user.name %>
+          </div>
+          <div class="comment-text">
+            <td>
+                <% comment.comment %>
+                <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <%# コメント投稿者本人であれば削除を表示 %>
+            <% if current_user == comment.user %>
+              <td>
+                <% link_to "削除", post_comment_path(post, post_comment), class: 'btn-sm btn-danger', method: :delete %>
+              </td>
+            <% end %>
+          </div>
+      <% end%>
+      <%# -------------------------------- %>
+
+      <%# コメント入力機能----------------- %>
+      <%= form_for [@post, @comment] do |f| %>
+        <div class="row">
+          <div class="col-sm-12">
+            <% f.text_area :comment, row: '5', class: "form-control",placeholder: "コメントをここに" %>
+          </div>
+        </div>
+        <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+      <% end %>
+      <%# ---------------------------------- %>
+      

@@ -1,2 +1,40 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="container">
+  <h1>Posts#index</h1>
+  <%# 投稿 %>
+  <%= form_with(model: @post, local: true) do |f| %>
+    <div class="field row">
+      <%= f.label :post %>
+      <%= f.text_area :post, class: "col-xs-12 post_body" %>
+    </div>
+    <div class="item-image">
+      <%= attachment_image_tag @post, :post, class:"img-square", fallback: "no_image.jpg", size:"200x160" %>
+      <%= f.attachment_field :post_image, placeholder: "画像" %>
+    </div>
+    <div class="actions row">
+      <%= f.submit "投稿", class: "btn btn-primary col-xs-12" %>
+    </div>
+  <% end %>
+  <%# ---------------- %>
+  <!--posts一覧 -->
+  <table class="table table-hover">
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.post %></td>
+          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+  <%# コメント件数表示 %>
+        <ul class="inline-meta">
+          <li>By
+            <%= post.user.name %>
+          </li>
+          <li>
+            <%= link_to "#{post.comments.count} コメント", post_path(post.id) %>
+          </li>
+        </ul>
+      <% end %>
+
+    </tbody>
+  </table>
+  <!---------------->
+</div>
