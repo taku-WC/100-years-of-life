@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # -----追加カラム-----
       t.string :name
       t.text :profile
-      t.string :profile_image
+      t.string :profile_image_id
       t.integer :user_level, default: 1
       t.integer :experience, default: 0
       # ---------------------

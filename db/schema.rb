@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_185836) do
 
   create_table "posts", force: :cascade do |t|
     t.text "post"
-    t.string "post_image"
+    t.string "post_image_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_185836) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "profile"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.integer "user_level", default: 1
     t.integer "experience", default: 0
     t.datetime "created_at", null: false
