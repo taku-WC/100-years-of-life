@@ -11,4 +11,80 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  @import "bootstrap";
+
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.logo-mini {
+  text-align: center;
+  border-radius: 50%;
+  border: 3px solid rgba(26, 189, 15, 0.5);
+  margin: 10px 10px 10px 10px;
+}
+
+.nav-pills > li > a:hover{
+  background-color: #fff;
+}
+.profile-image {
+  text-align: center;
+  margin: 20px;
+  border-radius: 50%;
+  border: 3px solid rgba(26, 189, 15, 0.5);
+}
+.profile-image-mini {
+  text-align: center;
+  border-radius: 50%;
+  margin: 20px 10px 10px 20px;
+}
+.post-content{
+  border-radius: 1%;
+  border: 1px solid rgba(26, 189, 15, 0.5);
+  margin-bottom: 2px;
+}
+.profile-area {
+  margin: 20px;
+}
+.profile-name {
+  font-size: 30px;
+}
+.profile-icon {
+  margin-left: 20px;
+}
+
+.post-area {
+  justify-content: space-between;
+}
+
+.post-name {
+  margin: auto;
+  background-color: #fff;
+}
+
+.post-date {
+  margin: auto;
+}
+
+.post-text {
+  padding: 0 30px;
+}
+.post-image {
+  justify-content: center;
+}
+
+.sidebar {
+  position: sticky;
+  top: 60px;
+}

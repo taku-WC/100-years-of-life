@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
+    @user = current_user
   end
   
   def create
@@ -15,8 +16,9 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
+    @posts = Post.all.page(params[:page]).reverse_order
     @post = Post.new
+    @user = current_user
   end
 
   def show
