@@ -23,6 +23,13 @@
   clear: both;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
 
 .btn {
   margin-bottom: 10px;
@@ -34,10 +41,10 @@
   border: 3px solid rgba(26, 189, 15, 0.5);
   margin: 10px 10px 10px 10px;
 }
-
 .nav-pills > li > a:hover{
   background-color: #fff;
 }
+
 .profile-image {
   text-align: center;
   margin: 20px;

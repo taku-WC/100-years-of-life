@@ -2,7 +2,6 @@
   <h1>home　Posts#index</h1>
     <%# 投稿フォーム %>
   <div class="row">
-
     <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
     <div class="col">
       <%= form_with(model: @post, local: true) do |f| %>
@@ -12,9 +11,38 @@
       <% end %>
     </div>
   </div>
-    <%# ---------------- %>
+  <%# ---------------- %>
+  <%# 非同期投稿 %>
+  <div class="posts">
+    <% render 'posts', posts: @posts %>
+  </div>
 
-    <!--posts一覧 -->
+  <%# ----------- %>
+  <%# modal-form %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新規投稿</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= form_with(model: @post) do |f| %>
+          <div class="modal-body">
+            <%= f.text_area :post, rows: "8", class: "form-control", placeholder: "なんか書いとけ" %>
+            <%= f.attachment_field :post_image, placeholder: "画像" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            <%= f.submit "投稿する", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%# ---------- %>
+  <!--posts一覧 -->
   <% @posts.each do |post| %>
     <div class="post-content">
       <%= link_to post_path(post.id) do %>

@@ -1,0 +1,55 @@
+<% posts.each do |post| %>
+  <div class="card mb-1">
+    <div class="post-content">
+      <%= link_to post_path(post.id) do %>
+        <div class="row">
+            <div class="col-2">
+              <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+            </div>
+            <div class="col-7 post-name">
+              <%= post.user.name %>
+            </div>
+            <div class="col-3 post-date">
+              <%= post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-10">
+            <div class="row post-text">
+              <%= post.post %>
+            </div>
+            <div class="row post-image">
+                <%= attachment_image_tag post, :post_image, format: 'jpeg', size: "420x280", class: "post-image" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# --------------------------- %>
+      <%# 投稿下部--------------------- %>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col">
+          <ul class="list-group list-group-horizontal-md">
+          <%# いいね %>
+            <div id="favorites_buttons_<%= post.id %>">
+              <%= render partial: 'favorites/favorite', locals: { post: post} %>
+            </div>
+          <%# ------- %>
+            <li class="list-group-item flex-fill">
+              <%= link_to post_path(post.id) do %>
+                <%= post.comments.count %>
+                <i class="far fa-comment-dots"></i>
+              <% end %>
+            </li>
+            <li class="list-group-item">
+              <%= link_to "削除", post_path(post), method: :delete %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<% end %>

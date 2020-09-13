@@ -14,7 +14,7 @@
     <div class="col-3 sidebar">
       <div class="sidebar">
         <div class="navbar-brand">
-          <%= link_to image_tag("logo.jpg"), root_path %>
+          <%= link_to image_tag("logo.jpg", width: "255" ), root_path %>
         </div>
         <ul class="nav flex-column nav-pills nav-fill mr-auto">
           <% if user_signed_in? %>
@@ -29,21 +29,29 @@
               <% end %>
             </li>
             <li class="nav-item btn btn-light active">
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                新規投稿
+              </button>
               <%= link_to new_post_path, class:"nav-item nav-link" do %>
                <i class="fas fa-comment-alt"> 投稿</i>
               <% end %>
             </li>
             <li class="nav-item btn btn-light">
               <%= link_to destroy_user_session_path, class:"nav-item nav-link", method: :delete do %>
-                <i class="fas fa-sign-out-alt">ログアウト</i>
+                <i class="fas fa-sign-out-alt"> ログアウト</i>
               <% end %>
             </li>
           <% else %>
             <li class="nav-item btn btn-light">
-              <%= link_to "新規登録", new_user_registration_path, class:"nav-item nav-link" %>
+              <%= link_to new_user_registration_path, class:"nav-item nav-link" do %>
+                <i class="fas fa-pen"> 新規登録</i>
+              <% end %>
             </li>
             <li class="nav-item btn btn-light">
-              <%= link_to "ログイン", new_user_session_path, class:"nav-item nav-link" %>
+              <%= link_to new_user_session_path, class:"nav-item nav-link" do %>
+                <i class="fas fa-sign-in-alt"> ログイン</i>
+              <% end %>
             </li>
           <% end %>
         </ul>
