@@ -23,28 +23,40 @@
   clear: both;
 }
 
-a {
-  text-decoration: none;
+body {
+  a:link {color:black; text-decoration:none }
+  a:visited { color:black; text-decoration:none }
+  a:hover { color:black; text-decoration:none }
+  a:active { color:black; text-decoration:none }
 }
-
-a:hover {
-  text-decoration: none;
-}
-
 .btn {
   margin-bottom: 10px;
 }
-
+.btn-group-vertical{
+  width: 100%;
+}
+.comment:hover{
+  background-color: rgba(160, 160, 160, 0.309);
+}
+.logo {
+  width:100%;
+  max-width: 100%;
+  height: auto;
+}
 .logo-mini {
   text-align: center;
   border-radius: 50%;
   border: 3px solid rgba(26, 189, 15, 0.5);
   margin: 10px 10px 10px 10px;
+  max-width: 100%;
+  height: auto;
+}
+.nav-font{
+  color: #fff;
 }
 .nav-pills > li > a:hover{
   background-color: #fff;
 }
-
 .profile-image {
   text-align: center;
   margin: 20px;
@@ -58,14 +70,18 @@ a:hover {
 }
 .post-content{
   border-radius: 1%;
-  border: 1px solid rgba(26, 189, 15, 0.5);
+  border: 1px solid rgba(160, 160, 160, 0.309);
   margin-bottom: 2px;
+}
+.post-content:hover {
+  background-color: rgba(160, 160, 160, 0.309);
 }
 .profile-area {
   margin: 20px;
 }
 .profile-name {
   font-size: 30px;
+  font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .profile-icon {
   margin-left: 20px;
@@ -74,23 +90,21 @@ a:hover {
 .post-area {
   justify-content: space-between;
 }
-
-.post-name {
-  margin: auto;
-  background-color: #fff;
+.post-image {
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
 }
-
+.post-name {
+  font-size: 20px;
+  margin: auto;
+}
 .post-date {
   margin: auto;
 }
-
 .post-text {
   padding: 0 30px;
 }
-.post-image {
-  justify-content: center;
-}
-
 .sidebar {
   position: sticky;
   top: 60px;

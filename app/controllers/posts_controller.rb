@@ -1,16 +1,22 @@
 class PostsController < ApplicationController
   def new
-    @post = Post.new
-    @user = current_user
-  end
-  
-  def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
       @posts = Post.all
     else
       @post = post.all
+      render 'index'
+    end
+  end
+  
+  def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @posts = Post.all
+    if @post.save
+      redirect_to posts_path
+    else
       render 'index'
     end
   end

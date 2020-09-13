@@ -1,71 +1,113 @@
 <div class="container">
   <h1>Posts#show</h1>
-  <%# 投稿本体 %>
-    <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
-    <%= @post.user.name %>
-    <%= attachment_image_tag @post, :post_image %>
-    <%= %>
-  <%# ------------ %>
-  <%# いいね %>
-    <div id="favorites_buttons_<%= @post.id %>">
-      <%= render partial: 'favorites/favorite', locals: { post: @post} %>
+  <%# 投稿全体 %>
+  <div class="post-content">
+    <%# 投稿上部 %>
+    <div class="row">
+      <div class="col-2">
+        <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+      </div>
+      <div class="col-7 post-name">
+        <%= @post.user.name %>
+      </div>
+      <div class="col-3 post-date">
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
+      </div>
     </div>
-  <%# ------- %>
-  <%# コメント %>
-    <i class="fa fa-comment"> </i>
-    <%= @post.comments.count %>
-  <%# -------- %>
-  <%# 削除 %>
-    <% if @post.user == current_user %>
-      <%= link_to posts_path, method: :delete do %>
-        <i class="fas fa-trash-alt"></i>
-      <% end %>
-    <% end %>
-  <%# ----- %>
+    <%# -------- %>
+    <%# 投稿中部 %>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+          <div class="row post-text">
+            <small><%= simple_format @post.post %></small>
+          </div>
+          <div class="row post-image">
+            <%= attachment_image_tag @post, :post_image, format: 'jpeg', size: "420x280", class: "post-image" %>
+          </div>
+        </div>
+      </div>
+    <%# ------------ %>
+    <%# 投稿下部--------------------- %>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col">
+        <ul class="list-group list-group-horizontal-md">
+          <%# いいね %>
+          <li class="list-group-item flex-fill" id="favorites_buttons_<%= @post.id %>">
+            <%= render partial: 'favorites/favorite', locals: { post: @post} %>
+          </li>
+          <%# ------- %>
+          <%# コメント %>
+          <li class="list-group-item flex-fill">
+            <%= link_to post_path(@post.id) do %>
+              <i class="far fa-comment-dots btn-outline-info"></i>
+              <%= @post.comments.count %>
+            <% end %>
+          </li>
+          <%# -------- %>
+          <%# 削除 %>
+          <% if @post.user == current_user %>
+            <li class="list-group-item flex-fill">
+              <%= link_to post_path(@post), method: :delete, class: 'btn-sm btn-outline-danger' do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </li>
+          <% end %>
+          <%# ---- %>
+        </ul>
+      </div>
+    </div>
+      <%# ---------------------------- %>
+  </div>
 
   <ul class="list-group list-group-flush">
     <% @post.comments.each do |comment|%>
-      <li class="list-group-item">
+      <li class="list-group-item comment">
         <%# コメントしたユーザー情報 %>
-        <div class="comment-profile">
-          <%= link_to user_path(comment.user) do %>
-            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
-          <% end %>
-          <%= comment.user.name %>
-        </div>
-        <div class="comment-text">
-          <%# コメント本文 %>
-          <%= comment.comment %>
-          <%# ------------ %>
-          <%# 日時 %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
-          <%# ----- %>
-          <%# コメント本人であれば削除を表示 %>
-            <% if @post.user == current_user %>
-              <%= link_to post_comment_path(comment.post, comment), class: 'btn-sm btn-danger', method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
+        <div class="row">
+          <div class="col-3">
+            <div class="comment-profile">
+              <%= link_to user_path(comment.user) do %>
+                <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
               <% end %>
-            <% end %>
-          <%# ------------------------------ %>
+              <%= comment.user.name %>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="comment-text">
+              <%# コメント本文 %>
+              <%= comment.comment %>
+              <%# ------------ %>
+            </div>
+          </div>
+          <div class="col-2">
+              <%# 日時 %>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+              <%# ----- %>
+              <%# コメント本人であれば削除を表示 %>
+                <% if @post.user == current_user %>
+                  <%= link_to post_comment_path(comment.post, comment), class: 'btn-sm btn-outline-danger', method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                <% end %>
+              <%# ------------------------------ %>
+          </div>
         </div>
       </li>
     <% end%>
   </ul>
 
-
-
-
-
-<h4>コメント入力</h4>
-<%# コメント入力機能----------------- %>
-<%= form_with model:[@post, @comment], local: true do |f| %>
+  <h4>コメント入力</h4>
+  <%# コメント入力機能----------------- %>
   <div class="row">
-    <div class="col-sm-12">
-      <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", class: "comment" %>
-      <%= f.submit "送信する", class: "btn btn-success pull-right" %>
+    <div class="col">
+      <%= form_with model:[@post, @comment], local: true do |f| %>
+        <%= f.text_area :comment, class: ("form-control :width'100%"), placeholder: "コメントをここに" %>
     </div>
+        <%= f.submit "送信する", class: "btn btn-success pull-right" %>
+      <% end %>
   </div>
-<% end %>
-<%# ---------------------------------- %>
+  <%# ---------------------------------- %>
 </div>
 

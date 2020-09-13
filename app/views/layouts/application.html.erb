@@ -10,54 +10,38 @@
   </head>
 <div class="container">
   <div class="row">
-  <%# ---------- %>
+    <%# サイドバー %>
     <div class="col-3 sidebar">
       <div class="sidebar">
-        <div class="navbar-brand">
-          <%= link_to image_tag("logo.jpg", width: "255" ), root_path %>
+        <div class="logo">
+          <%= link_to image_tag("logo.jpg", width: "255", class:"logo" ), root_path %>
         </div>
-        <ul class="nav flex-column nav-pills nav-fill mr-auto">
+        <div class="btn-group-vertical">
           <% if user_signed_in? %>
-            <li class="nav-item btn btn-light">
-              <%= link_to posts_path, class:"nav-item nav-link" do %>
-                <i class="fas fa-home"> ホーム</i>
-              <% end %>
-            </li>
-            <li class="nav-item btn btn-light">
-              <%= link_to user_path(current_user.id), class:"nav-item nav-link" do %>
-                <i class="fas fa-user"> プロフィール</i>
-              <% end %>
-            </li>
-            <li class="nav-item btn btn-light active">
-
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                新規投稿
-              </button>
-              <%= link_to new_post_path, class:"nav-item nav-link" do %>
-               <i class="fas fa-comment-alt"> 投稿</i>
-              <% end %>
-            </li>
-            <li class="nav-item btn btn-light">
-              <%= link_to destroy_user_session_path, class:"nav-item nav-link", method: :delete do %>
-                <i class="fas fa-sign-out-alt"> ログアウト</i>
-              <% end %>
-            </li>
+            <%= link_to posts_path, class:"btn btn-success" do %>
+              <i class="fas fa-home nav-font"> ホーム</i>
+            <% end %>
+            <%= link_to user_path(current_user.id), class:"btn btn-success" do %>
+              <i class="fas fa-user nav-font"> プロフィール</i>
+            <% end %>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-comment-alt nav-font"> 投稿</i>
+            </button>
+            <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success" do %>
+              <i class="fas fa-sign-out-alt nav-font"> ログアウト</i>
+            <% end %>
           <% else %>
-            <li class="nav-item btn btn-light">
-              <%= link_to new_user_registration_path, class:"nav-item nav-link" do %>
-                <i class="fas fa-pen"> 新規登録</i>
-              <% end %>
-            </li>
-            <li class="nav-item btn btn-light">
-              <%= link_to new_user_session_path, class:"nav-item nav-link" do %>
-                <i class="fas fa-sign-in-alt"> ログイン</i>
-              <% end %>
-            </li>
+            <%= link_to new_user_registration_path, class:"btn btn-success" do %>
+              <i class="fas fa-pen nav-font"> 新規登録</i>
+            <% end %>
+            <%= link_to new_user_session_path, class:"btn btn-success" do %>
+              <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
+            <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
-  <%# --------- %>
+    <%# --------- %>
     <div class="col-9">
       <body>
           <%= yield %>
