@@ -38,6 +38,15 @@ body {
 .comment:hover{
   background-color: rgba(160, 160, 160, 0.309);
 }
+.fixed_btn{
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  top: 30px;
+  right: 10px;
+  border-radius: 50%;
+  z-index: 2
+}
 .logo {
   width:100%;
   max-width: 100%;

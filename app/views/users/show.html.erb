@@ -1,16 +1,16 @@
 <div class="container">
   <h1>profile Users#show</h1>
 
-    <%# ユーザープロフィール %>
+  <%# ユーザープロフィール %>
   <div class="row">
     <div class="col-3">
         <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "150x150", class: "profile-image" %>
     </div>
     <div class="col-9">
       <div class="profile-area">
-        <span class="profile-name"><%= @user.name %></span>
+        <span class="profile-name"><%= @user.name %> Lv.<%= @user.user_level %></span>
         <span class="profile-icon">
-          <% if @user.id == current_user.id %>
+          <% if @user == current_user %>
             <%= link_to edit_user_path(@user) do %>
               <i class="fas fa-user-cog btn-outline-success"></i>
             <% end %>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <%# --------------------------- %>
+  <%# --------------------- %>
 
   <%# 投稿一覧（本人分） %>
   <% @post.each do |post| %>

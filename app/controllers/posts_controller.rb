@@ -3,18 +3,31 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      @posts = Post.all
+       @posts = Post.all
     else
-      @post = post.all
       render 'index'
     end
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @user = current_user
     @posts = Post.all
     if @post.save
+      experience = @user.experience
+      experience += 1
+
+      @user.experience = experience
+      @user.update(experience: experience)
+
+      levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
+
+      if levelSetting.threshold <= @user.experience
+          @user.user_level = @user.user_level + 1
+          @user.update(user_level: @user.user_level)
+      end
+
       redirect_to posts_path
     else
       render 'index'
@@ -24,7 +37,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.page(params[:page]).reverse_order
     @post = Post.new
-    @user = current_user
   end
 
   def show

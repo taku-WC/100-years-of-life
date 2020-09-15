@@ -2,7 +2,7 @@
   <h1>Home</h1>
   <%# 投稿フォーム %>
   <div class="row">
-    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
+    <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
     <div class="col">
       <%= form_with(model: @post, local: true) do |f| %>
           <%= f.text_area :post, rows: "3", class: "col form-control", placeholder: "なんか書いとけ" %>
@@ -12,6 +12,12 @@
     </div>
   </div>
   <%# ---------- %>
+  <%# 固定ボタン------ %>
+  <button type="button" class="btn btn-success fixed_btn" data-toggle="modal" data-target="#exampleModal">
+    <i class="far fa-paper-plane"></i>
+  </button>
+  <%# ---------------- %>
+
   <%# modal-form %>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -24,11 +30,15 @@
         </div>
         <%= form_with(model: @post) do |f| %>
           <div class="modal-body">
-            <%= f.text_area :post, rows: "8", class: "form-control", placeholder: "なんか書いとけ" %>
-            <%= f.attachment_field :post_image, placeholder: "画像" %>
+            <div class="form-group">
+              <%= f.text_area :post, rows: "8", class: "form-control", placeholder: "なんか書いとけ" %>
+            </div>
+            <div class="form-group">
+              <%= f.attachment_field :post_image, placeholder: "画像" %>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            <button button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
             <%= f.submit "投稿する", class: "btn btn-success" %>
           </div>
         <% end %>
@@ -50,7 +60,7 @@
               <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
             </div>
             <div class="col-7 post-name">
-              <%= post.user.name %>
+              <%= post.user.name %> Lv.<%= post.user.user_level %>
             </div>
             <div class="col-3 post-date">
               <%= post.created_at.strftime('%Y/%m/%d') %>
