@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+ <div class="">
+ 
+  <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini"%>
+  <%= user.name %>
+  Lv.<%= user.user_level %>
+ </div>
+<% end %>

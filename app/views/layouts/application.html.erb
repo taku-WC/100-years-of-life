@@ -24,9 +24,9 @@
             <%= link_to user_path(current_user.id), class:"btn btn-success" do %>
               <i class="fas fa-user nav-font"> プロフィール</i>
             <% end %>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-              <i class="fas fa-comment-alt nav-font"> 投稿</i>
-            </button>
+            <%= link_to users_path, class:"btn btn-success" do %>
+              <i class="fas fa-users nav-font"> メンバーズ</i>
+            <% end %>
             <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success" do %>
               <i class="fas fa-sign-out-alt nav-font"> ログアウト</i>
             <% end %>
