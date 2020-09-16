@@ -85,5 +85,9 @@
     </div>
   <% end %>
   <%# --------------------------- %>
-  <%= paginate @post %>
+  <div class="row justify-content-md-center">
+    <div class="col-9">
+      <%= paginate @post, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
 </div>

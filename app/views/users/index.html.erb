@@ -1,8 +1,12 @@
-<% @users.each do |user| %>
- <div class="">
- 
-  <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini"%>
-  <%= user.name %>
-  Lv.<%= user.user_level %>
- </div>
-<% end %>
+<div class="container">
+  <h1>menbers</h1>
+
+  <% @users.each do |user| %>
+  <div class="list-group list-group-item profile-list">
+    <%= link_to user_path(user.id) do %>
+      <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini"%>
+      <%= user.name %> Lv.<%= user.user_level %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

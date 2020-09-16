@@ -4,12 +4,14 @@
   <div class="post-content">
     <%# 投稿上部 %>
     <div class="row">
-      <div class="col-2">
-        <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
-      </div>
-      <div class="col-7 post-name">
-        <%= @post.user.name %>
-      </div>
+        <div class="col-2">
+          <%= link_to user_path(@post.user_id) do %>
+            <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+        </div>
+        <div class="col-7 post-name">
+            <%= @post.user.name %>
+          <% end %>
+        </div>
       <div class="col-3 post-date">
         <%= @post.created_at.strftime('%Y/%m/%d') %>
       </div>

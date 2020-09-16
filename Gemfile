@@ -81,5 +81,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass'
 # ページネーション機能
 gem 'kaminari', '~> 0.17.0'
+gem 'bootstrap4-kaminari-views'
 #デバッグ
 gem 'pry-byebug'
