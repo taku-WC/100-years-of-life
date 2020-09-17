@@ -1,10 +1,18 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div class="top-image"></div>
 
-<div class="jumbotron bg-success text-white">
-  <h1 class="display-4">お金、 友達、 筋肉。</h1>
-  <p class="lead">長生きのお供に。</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-light btn-lg" href="#" role="button">Learn more</a>
-</div>
+  <section class="content-section" id="about">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h4 class="display-4">お金、友達、筋肉。</h4>
+          <p class="lead  mb-5">人生100年時代の老後に残すもの<br/>
+          </p>
+
+          <%= link_to  about_path, class:"btn btn-outline-success btn-lg" do %>
+            <i class="fas fa-angle-double-right color:white;"> 詳しく</i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+

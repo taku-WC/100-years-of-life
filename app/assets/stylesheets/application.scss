@@ -22,7 +22,30 @@
   display: block;
   clear: both;
 }
-
+.about-image1 {
+  background-image: url(money.jpg);
+  background-size: cover;
+}
+.about-image2 {
+  background-image: url(friend.jpg);
+  background-size: cover;
+  background-position: 30% 30%;
+}
+.about-image3 {
+  background-image: url(muscle.jpg);
+  background-size: cover;
+  background-position: 30% 30%;
+}
+body {
+  padding-top: 56px;
+}
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 body {
   a:link {color:black; text-decoration:none }
   a:visited { color:black; text-decoration:none }
@@ -34,6 +57,10 @@ body {
 }
 .btn-group-vertical{
   width: 100%;
+}
+.content-section {
+  margin-top: 50px;
+  background-color: rgba(250, 250, 250, 0.9);
 }
 .comment:hover{
   background-color: rgba(160, 160, 160, 0.309);
@@ -49,6 +76,10 @@ body {
 }
 .profile-list:hover{
   background-color: rgba(160, 160, 160, 0.309);
+}
+section {
+  background:rgba(255, 255, 255, 0.5);
+  top: 100px;
 }
 .logo {
   width:100%;
@@ -68,6 +99,9 @@ body {
 }
 .nav-pills > li > a:hover{
   background-color: #fff;
+}
+.pagination {
+  page-break-after: 20px;
 }
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
@@ -135,4 +169,15 @@ body {
 .sidebar {
   position: sticky;
   top: 60px;
+  background:rgba(255, 255, 255, 0.5);
+}
+.top-image {
+  position: fixed;
+  height: 60%;
+  width: 100%;
+  bottom: -2%;
+  left: -2%;
+  background-image: url(top.jpg);
+  background-size: cover;
+  z-index: -1;
 }

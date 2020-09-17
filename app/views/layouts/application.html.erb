@@ -8,45 +8,45 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<div class="container">
-  <div class="row">
-    <%# サイドバー %>
-    <div class="col-3 sidebar">
-      <div class="sidebar">
-        <div class="logo">
-          <%= link_to image_tag("logo.jpg", width: "255", class:"logo" ), root_path %>
+  <body>
+    <div class="container">
+      <div class="row">
+        <%# サイドバー %>
+        <div class="col-3 sidebar">
+          <div class="sidebar">
+            <div class="logo">
+              <%= link_to image_tag("logo.jpg", width: "255", class:"logo" ), root_path %>
+            </div>
+            <div class="btn-group-vertical">
+              <% if user_signed_in? %>
+                <%= link_to posts_path, class:"btn btn-success" do %>
+                  <i class="fas fa-home nav-font"> ホーム</i>
+                <% end %>
+                <%= link_to user_path(current_user.id), class:"btn btn-success" do %>
+                  <i class="fas fa-user nav-font"> プロフィール</i>
+                <% end %>
+                <%= link_to users_path, class:"btn btn-success" do %>
+                  <i class="fas fa-users nav-font"> メンバーズ</i>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success" do %>
+                  <i class="fas fa-sign-out-alt nav-font"> ログアウト</i>
+                <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path, class:"btn btn-success" do %>
+                  <i class="fas fa-pen nav-font"> 新規登録</i>
+                <% end %>
+                <%= link_to new_user_session_path, class:"btn btn-success" do %>
+                  <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="btn-group-vertical">
-          <% if user_signed_in? %>
-            <%= link_to posts_path, class:"btn btn-success" do %>
-              <i class="fas fa-home nav-font"> ホーム</i>
-            <% end %>
-            <%= link_to user_path(current_user.id), class:"btn btn-success" do %>
-              <i class="fas fa-user nav-font"> プロフィール</i>
-            <% end %>
-            <%= link_to users_path, class:"btn btn-success" do %>
-              <i class="fas fa-users nav-font"> メンバーズ</i>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success" do %>
-              <i class="fas fa-sign-out-alt nav-font"> ログアウト</i>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_registration_path, class:"btn btn-success" do %>
-              <i class="fas fa-pen nav-font"> 新規登録</i>
-            <% end %>
-            <%= link_to new_user_session_path, class:"btn btn-success" do %>
-              <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
-            <% end %>
-          <% end %>
+        <%# --------- %>
+        <div class="col-9">
+          <%= yield %>
         </div>
       </div>
     </div>
-    <%# --------- %>
-    <div class="col-9">
-      <body>
-          <%= yield %>
-      </body>
-    </div>
-  </div>
-</div>
+  </body>
 </html>
