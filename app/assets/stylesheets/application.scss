@@ -23,16 +23,16 @@
   clear: both;
 }
 .about-image1 {
-  background-image: url(money.jpg);
+  background-image: image-url(money.jpg);
   background-size: cover;
 }
 .about-image2 {
-  background-image: url(friend.jpg);
+  background-image: image-url(friend.jpg);
   background-size: cover;
   background-position: 30% 30%;
 }
 .about-image3 {
-  background-image: url(muscle.jpg);
+  background-image: image-url(muscle.jpg);
   background-size: cover;
   background-position: 30% 30%;
 }
@@ -177,7 +177,7 @@ section {
   width: 100%;
   bottom: -2%;
   left: -2%;
-  background-image: url(top.jpg);
+  background-image: image-url(top.jpg);
   background-size: cover;
   z-index: -1;
 }

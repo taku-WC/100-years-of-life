@@ -84,3 +84,8 @@ gem 'kaminari', '~> 0.17.0'
 gem 'bootstrap4-kaminari-views'
 #デバッグ
 gem 'pry-byebug'
+# mysql
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
