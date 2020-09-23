@@ -38,19 +38,23 @@
 }
 body {
   padding-top: 56px;
-}
-.bg-image-full {
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
-body {
   a:link {color:black; text-decoration:none }
   a:visited { color:black; text-decoration:none }
   a:hover { color:black; text-decoration:none }
   a:active { color:black; text-decoration:none }
+}
+.bottom-area{
+  margin: 40px;
+}
+.bg-image {
+  position: fixed;
+  height: 60%;
+  width: 100%;
+  bottom: -2%;
+  left: -2%;
+  background-image: url(top.jpg);
+  background-size: cover;
+  z-index: -1;
 }
 .btn {
   margin-bottom: 10px;
@@ -63,23 +67,19 @@ body {
   background-color: rgba(250, 250, 250, 0.9);
 }
 .comment:hover{
-  background-color: rgba(160, 160, 160, 0.309);
+  background-color: rgba(176, 233, 188, 0.309);
+}
+.edit-btn {
+  text-align: right;
 }
 .fixed_btn{
   position: fixed;
   width: 60px;
   height: 60px;
-  top: 30px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
   border-radius: 50%;
   z-index: 2
-}
-.profile-list:hover{
-  background-color: rgba(160, 160, 160, 0.309);
-}
-section {
-  background:rgba(255, 255, 255, 0.5);
-  top: 100px;
 }
 .logo {
   width:100%;
@@ -93,6 +93,9 @@ section {
   margin: 10px 10px 10px 10px;
   max-width: 100%;
   height: auto;
+}
+.main-content-color{
+  background:rgba(255, 255, 255, 0.5);
 }
 .nav-font{
   color: #fff;
@@ -129,13 +132,16 @@ section {
   border-radius: 50%;
   margin: 20px 10px 10px 20px;
 }
+.profile-list:hover{
+  background-color: rgba(176, 233, 188, 0.309);
+}
 .post-content{
   border-radius: 1%;
   border: 1px solid rgba(160, 160, 160, 0.309);
   margin-bottom: 2px;
 }
 .post-content:hover {
-  background-color: rgba(160, 160, 160, 0.309);
+  background-color: rgba(176, 233, 188, 0.309);
 }
 .profile-area {
   margin: 20px;
@@ -147,7 +153,11 @@ section {
 .profile-icon {
   margin-left: 20px;
 }
-
+.profile-outline {
+  border-radius: 1%;
+  border: 1px solid rgba(160, 160, 160, 0.309);
+  margin-bottom: 10px;
+}
 .post-area {
   justify-content: space-between;
 }
@@ -166,18 +176,25 @@ section {
 .post-text {
   padding: 0 30px;
 }
+section {
+  background:rgba(255, 255, 255, 0.5);
+  top: 100px;
+}
 .sidebar {
   position: sticky;
   top: 60px;
   background:rgba(255, 255, 255, 0.5);
 }
-.top-image {
-  position: fixed;
-  height: 60%;
-  width: 100%;
-  bottom: -2%;
-  left: -2%;
-  background-image: image-url("top.jpg");
-  background-size: cover;
-  z-index: -1;
+
+
+@media screen and (max-width: 375px) {
+  .sidebar {
+    display: none;
+  }
+  .post-form {
+    display: none;
+  }
+  body {
+    padding-top: 10px;
+  }
 }
