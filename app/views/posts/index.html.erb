@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>Home</h1>
+  <h3><i class="fas fa-home mb-10"> ホーム</i></h3>
   <%# 投稿フォーム %>
-  <div class="row">
+  <div class="row post-form">
     <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
     <div class="col">
       <%= form_with(model: @post, local: true) do |f| %>
           <%= f.text_area :post, rows: "3", class: "col form-control", placeholder: "なんか書いとけ" %>
           <%= f.attachment_field :post_image, placeholder: "画像" %>
-          <%= f.submit "投稿", class: "btn btn-outline-success col-xs-12" %>
+          <%= f.submit "投稿", class: "btn btn-outline-success col-xs-12 mt-2" %>
       <% end %>
     </div>
   </div>
@@ -84,7 +84,7 @@
       <div class="row">
         <div class="col-2"></div>
         <div class="col">
-          <ul class="list-group list-group-horizontal-md">
+          <ul class="list-group list-group-horizontal">
             <%# いいね %>
             <li class="list-group-item flex-fill" id="favorites_buttons_<%= post.id %>">
               <%= render partial: 'favorites/favorite', locals: { post: post} %>
@@ -114,7 +114,7 @@
     </div>
   <% end %>
   <%# --------------------------- %>
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-md-center bottom-area">
     <div class="col-9">
       <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
     </div>
