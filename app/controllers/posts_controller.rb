@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @user = current_user
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(5).order("created_at DESC")
     if @post.save
       experience = @user.experience
       experience += 1

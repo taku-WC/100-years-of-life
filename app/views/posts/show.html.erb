@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <h1>Posts#show</h1>
   <%# 投稿全体 %>
   <div class="post-content">
@@ -62,6 +62,17 @@
     </div>
       <%# ---------------------------- %>
   </div>
+  <%# コメント入力機能----------------- %>
+  <h4>コメント入力</h4>
+  <div class="row mb-2">
+    <div class="col">
+      <%= form_with model:[@post, @comment], local: true do |f| %>
+        <%= f.text_area :comment, class: ("form-control :width'100%"), placeholder: "コメントをここに" %>
+    </div>
+        <%= f.submit "送信する", class: "btn btn-success pull-right" %>
+      <% end %>
+  </div>
+  <%# ---------------------------------- %>
 
   <ul class="list-group list-group-flush">
     <% @post.comments.each do |comment|%>
@@ -100,16 +111,5 @@
     <% end%>
   </ul>
 
-  <h4>コメント入力</h4>
-  <%# コメント入力機能----------------- %>
-  <div class="row">
-    <div class="col">
-      <%= form_with model:[@post, @comment], local: true do |f| %>
-        <%= f.text_area :comment, class: ("form-control :width'100%"), placeholder: "コメントをここに" %>
-    </div>
-        <%= f.submit "送信する", class: "btn btn-success pull-right" %>
-      <% end %>
-  </div>
-  <%# ---------------------------------- %>
 </div>
 

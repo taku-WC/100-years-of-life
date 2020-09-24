@@ -11,4 +11,6 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
 
   # バリデーション
+  validates :name, presence: true
+  validates :email, presence: true
 end
