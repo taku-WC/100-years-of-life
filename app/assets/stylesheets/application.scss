@@ -103,6 +103,9 @@ body {
 .nav-pills > li > a:hover{
   background-color: #fff;
 }
+nav.pagination {
+  display: none;
+}
 .pagination {
   page-break-after: 20px;
 }
