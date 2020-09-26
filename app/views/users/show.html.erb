@@ -1,0 +1,93 @@
+<div class="container">
+  <h2><i class="fas fa-user"> プロフィール</i></h2>
+
+  <%# ユーザープロフィール %>
+  <div class="row profile-outline">
+    <div class="col-3">
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "150x150", class: "profile-image" %>
+    </div>
+    <div class="col-9">
+      <div class="profile-area">
+        <span class="profile-name"><%= @user.name %> Lv.<%= @user.user_level %></span>
+        <span class="profile-icon">
+          <% if @user == current_user %>
+            <%= link_to edit_user_path(@user) do %>
+              <i class="fas fa-user-cog btn-outline-success"></i>
+            <% end %>
+          <% end %>
+        </span>
+        <div class="profile-text"><%= @user.profile %></div>
+      </div>
+    </div>
+  </div>
+  <%# --------------------- %>
+
+  <%# 投稿一覧（本人分） %>
+  <% @post.each do |post| %>
+    <div class="post-content">
+      <%= link_to post_path(post.id) do %>
+        <div class="row">
+            <div class="col-2">
+              <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+            </div>
+            <div class="col-7 post-name">
+              <%= post.user.name %>
+            </div>
+            <div class="col-3 post-date">
+              <%= post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-10">
+            <div class="row post-text">
+              <%= post.post %>
+            </div>
+            <div class="row post-image">
+                <%= attachment_image_tag post, :post_image, format: 'jpeg', size: "420x280", class: "post-image" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# --------------------------- %>
+      <%# 投稿下部--------------------- %>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col">
+          <ul class="list-group list-group-horizontal-md">
+            <%# いいね %>
+            <li class="list-group-item flex-fill" id="favorites_buttons_<%= post.id %>">
+              <%= render partial: 'favorites/favorite', locals: { post: post} %>
+            </li>
+            <%# ------- %>
+            <%# コメント %>
+            <li class="list-group-item flex-fill">
+              <%= link_to post_path(post.id) do %>
+                <i class="far fa-comment-dots btn-outline-info"></i>
+                <%= post.comments.count %>
+              <% end %>
+            </li>
+            <%# -------- %>
+            <%# 削除 %>
+            <% if post.user == current_user %>
+              <li class="list-group-item flex-fill">
+                <%= link_to post_path(post), method: :delete, class: 'btn-sm btn-outline-danger' do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </li>
+            <% end %>
+            <%# ---- %>
+          </ul>
+        </div>
+      </div>
+      <%# ---------------------------- %>
+    </div>
+  <% end %>
+  <%# --------------------------- %>
+  <div class="row justify-content-md-center bottom-area">
+    <div class="col-9">
+      <%= paginate @post, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

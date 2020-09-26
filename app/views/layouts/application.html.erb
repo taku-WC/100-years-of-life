@@ -7,9 +7,76 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
-
   <body>
-    <%= yield %>
+    <div class="container">
+    <div class="bg-image"></div>
+    <div class="notice"></div>
+      <div class="row justify-content-md-center">
+        <%# サイドバー %>
+        <div class="col-3 sidebar">
+          <div class="sidebar">
+            <div class="logo">
+              <%= link_to image_tag("logo.jpg", width: "255", class:"logo" ), root_path %>
+            </div>
+            <div class="btn-group-vertical">
+              <% if user_signed_in? %>
+                <%= link_to posts_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-home nav-font"> ホーム</i>
+                <% end %>
+                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-user nav-font"> プロフィール</i>
+                <% end %>
+                <%= link_to users_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-users nav-font"> メンバーズ</i>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-sign-out-alt nav-font"> ログアウト</i>
+                <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-pen nav-font"> 新規登録</i>
+                <% end %>
+                <%= link_to new_user_session_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <%# --------- %>
+        <%# レスポンシブ %>
+        <div class="navbar fixed-top justify-content-around mt-1">
+          <h2>Life</h2>
+        </div>
+        <div class="navbar  fixed-bottom bg-light  justify-content-around ">
+              <% if user_signed_in? %>
+                <%= link_to posts_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-home nav-font"> </i>
+                <% end %>
+                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-user nav-font"> </i>
+                <% end %>
+                <%= link_to users_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-users nav-font"> </i>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-sign-out-alt nav-font"> </i>
+                <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-pen nav-font"> 新規登録</i>
+                <% end %>
+                <%= link_to new_user_session_path, class:"btn btn-success nav-item" do %>
+                  <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
+                <% end %>
+              <% end %>
+        </div>
+        <div class="col-md-9 main-content-color">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

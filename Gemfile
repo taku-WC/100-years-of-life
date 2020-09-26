@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+    # Capistrano
+    gem 'capistrano'
+    gem 'capistrano-rails'
+    gem 'capistrano3-puma'
+    gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -76,10 +81,16 @@ gem 'rails_admin'
 # 検索機能
 gem 'ransack'
 # デザイン関係
-gem 'bootstrap', '~> 4.1.1'
-gem 'jquery-rails'
-gem 'font-awesome-sass', '~> 5.4.1'
+gem 'bootstrap', '~> 4.3.1'
+# Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails gem to your Gemfile'
+gem 'font-awesome-sass'
 # ページネーション機能
 gem 'kaminari', '~> 0.17.0'
+gem 'bootstrap4-kaminari-views'
 #デバッグ
 gem 'pry-byebug'
+# mysql
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

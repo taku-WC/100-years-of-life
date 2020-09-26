@@ -1,0 +1,3 @@
+ <%# #favorites_buttons_<%= @post.id %>
+ <%# ↑部分のHTMLだけ、renderで部分的に更新するという処理 %>
+$('#favorites_buttons_<%= @post.id %>').html("<%= escape_javascript(render partial: 'favorites/favorite', locals: {post: @post}) %>");

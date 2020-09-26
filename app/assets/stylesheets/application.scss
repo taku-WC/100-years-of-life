@@ -1,0 +1,211 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import "bootstrap";
+
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.about-image1 {
+  background-image: image-url("money.jpg");
+  background-size: cover;
+}
+.about-image2 {
+  background-image: image-url("friend.jpg");
+  background-size: cover;
+  background-position: 30% 30%;
+}
+.about-image3 {
+  background-image: image-url("muscle.jpg");
+  background-size: cover;
+  background-position: 30% 30%;
+}
+body {
+  padding-top: 56px;
+  a:link {color:black; text-decoration:none }
+  a:visited { color:black; text-decoration:none }
+  a:hover { color:black; text-decoration:none }
+  a:active { color:black; text-decoration:none }
+}
+.bottom-area{
+  margin: 40px;
+}
+.bg-image {
+  position: fixed;
+  height: 60%;
+  width: 100%;
+  bottom: -2%;
+  left: -2%;
+  background-image: url(top.jpg);
+  background-size: cover;
+  z-index: -1;
+}
+.btn {
+  margin-bottom: 10px;
+}
+.btn-group-vertical{
+  width: 100%;
+}
+.content-section {
+  margin-top: 50px;
+  height : 400px;
+}
+.comment:hover{
+  background-color: rgba(176, 233, 188, 0.309);
+}
+.edit-btn {
+  text-align: right;
+}
+.fixed_btn{
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  z-index: 2
+}
+.logo {
+  width:100%;
+  max-width: 100%;
+  height: auto;
+}
+.logo-mini {
+  text-align: center;
+  border-radius: 50%;
+  border: 3px solid rgba(26, 189, 15, 0.5);
+  margin: 10px 10px 10px 10px;
+  max-width: 100%;
+  height: auto;
+}
+.main-content-color{
+  background:rgba(255, 255, 255, 0.5);
+}
+.nav-font{
+  color: #fff;
+}
+.nav-pills > li > a:hover{
+  background-color: #fff;
+}
+.pagination {
+  page-break-after: 20px;
+}
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+.profile-image {
+  text-align: center;
+  margin: 20px;
+  border-radius: 50%;
+  border: 3px solid rgba(26, 189, 15, 0.5);
+}
+.profile-image-mini {
+  text-align: center;
+  border-radius: 50%;
+  margin: 20px 10px 10px 20px;
+}
+.profile-list:hover{
+  background-color: rgba(176, 233, 188, 0.309);
+}
+.post-content{
+  border-radius: 1%;
+  border: 1px solid rgba(160, 160, 160, 0.309);
+  margin-bottom: 2px;
+}
+.post-content:hover {
+  background-color: rgba(176, 233, 188, 0.309);
+}
+.profile-area {
+  margin: 20px;
+}
+.profile-name {
+  font-size: 30px;
+  font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.profile-icon {
+  margin-left: 20px;
+}
+.profile-outline {
+  border-radius: 1%;
+  border: 1px solid rgba(160, 160, 160, 0.309);
+  margin-bottom: 10px;
+}
+.post-area {
+  justify-content: space-between;
+}
+.post-image {
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+.post-name {
+  font-size: 20px;
+  margin: auto;
+}
+.post-date {
+  margin: auto;
+}
+.post-text {
+  padding: 0 30px;
+}
+section {
+  background:rgba(255, 255, 255, 0.5);
+  top: 100px;
+}
+.sidebar {
+  position: sticky;
+  top: 60px;
+  background:rgba(255, 255, 255, 0.5);
+}
+
+
+
+@media screen and (max-width: 780px) {
+  body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .fixed_btn{
+    bottom: 70px;
+  }
+  .sidebar {
+    display: none;
+  }
+  .post-form {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .navbar {
+    display: none;
+  }
+}
