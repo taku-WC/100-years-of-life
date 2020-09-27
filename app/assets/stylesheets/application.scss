@@ -16,6 +16,10 @@
  @import 'font-awesome';
  @import "bootstrap";
 
+ * {
+   margin: 0px;
+   padding: 0px;
+   }
 
 .clearfix::after {
   content: "";
@@ -191,6 +195,7 @@ section {
 
 
 
+
 @media screen and (max-width: 780px) {
   body {
     padding-top: 70px;
@@ -198,6 +203,10 @@ section {
   }
   .fixed_btn{
     bottom: 70px;
+  }
+  .navbar{
+    background-color: #fff;
+    margin: 0;
   }
   .sidebar {
     display: none;

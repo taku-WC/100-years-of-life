@@ -55,7 +55,7 @@
   <div class="jscroll">
     <% @posts.each do |post| %>
       <div class="post-content">
-        <%= link_to post_path(post.id) do %>
+        <%= link_to post_path(post.id), data: {"turbolinks"=>false} do %>
           <div class="row">
               <div class="col-2">
                 <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
