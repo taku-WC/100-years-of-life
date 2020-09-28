@@ -22,13 +22,13 @@
             </div>
             <div class="btn-group-vertical">
               <% if user_signed_in? %>
-                <%= link_to posts_path, class:"btn btn-success nav-item" do %>
+                <%= link_to posts_path, class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-home nav-font"> ホーム</i>
                 <% end %>
-                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item" do %>
+                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-user nav-font"> プロフィール</i>
                 <% end %>
-                <%= link_to users_path, class:"btn btn-success nav-item" do %>
+                <%= link_to users_path, class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-users nav-font"> メンバーズ</i>
                 <% end %>
                 <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success nav-item" do %>
@@ -52,19 +52,33 @@
         </div>
         <div class="navbar  fixed-bottom bg-light  justify-content-around ">
               <% if user_signed_in? %>
-                <%= link_to posts_path, class:"btn btn-success nav-item" do %>
+                <div class="navbar fixed-top justify-content-around">
+                  <%= link_to posts_path, data: {"turbolinks"=>false} do %>
+                    <h2>Life</h2>
+                  <% end %>
+                </div>
+              <%# ホーム %>
+                <%= link_to posts_path, class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-home nav-font"> </i>
                 <% end %>
-                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item" do %>
+                <%# プロフィール %>
+                <%= link_to user_path(current_user.id), class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-user nav-font"> </i>
                 <% end %>
-                <%= link_to users_path, class:"btn btn-success nav-item" do %>
+                <%# メンバーズ %>
+                <%= link_to users_path, class:"btn btn-success nav-item", data: {"turbolinks"=>false} do %>
                   <i class="fas fa-users nav-font"> </i>
                 <% end %>
+                <%# ログアウト %>
                 <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-success nav-item" do %>
                   <i class="fas fa-sign-out-alt nav-font"> </i>
                 <% end %>
               <% else %>
+                <div class="navbar fixed-top justify-content-around">
+                  <%= link_to root_path do%>
+                    <h2>Life</h2>
+                  <% end %>
+                </div>
                 <%= link_to new_user_registration_path, class:"btn btn-success nav-item" do %>
                   <i class="fas fa-pen nav-font"> 新規登録</i>
                 <% end %>

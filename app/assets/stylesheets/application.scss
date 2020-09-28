@@ -19,6 +19,7 @@
  * {
    margin: 0px;
    padding: 0px;
+   word-break: normal;
    }
 
 .clearfix::after {
@@ -73,6 +74,10 @@ body {
 .comment:hover{
   background-color: rgba(176, 233, 188, 0.309);
 }
+.comment-user-img {
+  width: 50px;
+  height: 50px;
+}
 .edit-btn {
   text-align: right;
 }
@@ -100,6 +105,7 @@ body {
 }
 .main-content-color{
   background:rgba(255, 255, 255, 0.5);
+  padding: 0px;
 }
 .nav-font{
   color: #fff;
@@ -128,19 +134,8 @@ nav.pagination {
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
-.profile-image {
-  text-align: center;
-  margin: 20px;
-  border-radius: 50%;
-  border: 3px solid rgba(26, 189, 15, 0.5);
-}
-.profile-image-mini {
-  text-align: center;
-  border-radius: 50%;
-  margin: 20px 10px 10px 20px;
-}
-.profile-list:hover{
-  background-color: rgba(176, 233, 188, 0.309);
+.post-area {
+  justify-content: space-between;
 }
 .post-content{
   border-radius: 1%;
@@ -149,24 +144,6 @@ nav.pagination {
 }
 .post-content:hover {
   background-color: rgba(176, 233, 188, 0.309);
-}
-.profile-area {
-  margin: 20px;
-}
-.profile-name {
-  font-size: 30px;
-  font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-.profile-icon {
-  margin-left: 20px;
-}
-.profile-outline {
-  border-radius: 1%;
-  border: 1px solid rgba(160, 160, 160, 0.309);
-  margin-bottom: 10px;
-}
-.post-area {
-  justify-content: space-between;
 }
 .post-image {
   justify-content: center;
@@ -183,6 +160,39 @@ nav.pagination {
 .post-text {
   padding: 0 30px;
 }
+.profile-area {
+  margin: 20px;
+}
+.profile-image {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  margin: 20px;
+  border-radius: 50%;
+  border: 3px solid rgba(26, 189, 15, 0.5);
+}
+.profile-image-mini {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  margin: 20px 10px 10px 20px;
+}
+.profile-list:hover{
+  background-color: rgba(176, 233, 188, 0.309);
+}
+.profile-name {
+  font-size: 25px;
+  font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.profile-icon {
+  margin-left: 20px;
+}
+.profile-outline {
+  border-radius: 1%;
+  border: 1px solid rgba(160, 160, 160, 0.309);
+  margin-bottom: 10px;
+}
 section {
   background:rgba(255, 255, 255, 0.5);
   top: 100px;
@@ -194,12 +204,18 @@ section {
 }
 
 
-
-
+// レスポンシブ対応（スマートフォン）
 @media screen and (max-width: 780px) {
   body {
     padding-top: 70px;
     padding-bottom: 70px;
+  }
+  .comment-name {
+    font-size: 7px;
+  }
+  .comment-user-img {
+    width: 30px;
+    height: 30px; 
   }
   .fixed_btn{
     bottom: 70px;
@@ -214,8 +230,37 @@ section {
   .post-form {
     display: none;
   }
+  .post-name {
+    font-size: 15px;
+    font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .post-date {
+    font-size: 5px;
+  }
+  .post-image {
+    padding-left: 15px;
+  }
+  .profile-area{
+    margin: 0px;
+  }
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    margin: 0px, auto;
+  }
+  .profile-image-mini {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 10px 0px 0px 10px;
+  }
+  .profile-name {
+    font-size: 15px;
+    font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 }
-
+// レスポンシブ対応(PC)
 @media screen and (min-width: 780px) {
   .navbar {
     display: none;

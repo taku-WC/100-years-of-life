@@ -1,11 +1,11 @@
 <div class="container">
-  <h3><i class="fas fa-home mb-10"> ホーム</i></h3>
+  <h4><i class="fas fa-home mb-10"> ホーム</i></h4>
   <%# 投稿フォーム %>
   <div class="row post-form">
     <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
     <div class="col">
       <%= form_with(model: @post, local: true) do |f| %>
-          <%= f.text_area :post, rows: "3", class: "col form-control", placeholder: "なんか書いとけ" %>
+          <%= f.text_area :post, rows: "3", class: "col form-control", placeholder: "お金・友達・筋肉について語ろう" %>
           <%= f.attachment_field :post_image, placeholder: "画像" %>
           <%= f.submit "投稿", class: "btn btn-outline-success col-xs-12 mt-2" %>
       <% end %>
@@ -31,7 +31,7 @@
         <%= form_with(model: @post) do |f| %>
           <div class="modal-body">
             <div class="form-group">
-              <%= f.text_area :post, rows: "8", class: "form-control", placeholder: "なんか書いとけ" %>
+              <%= f.text_area :post, rows: "8", class: "form-control", placeholder: "お金・友達・筋肉について語ろう" %>
             </div>
             <div class="form-group">
               <%= f.attachment_field :post_image, placeholder: "画像" %>
@@ -58,7 +58,7 @@
         <%= link_to post_path(post.id), data: {"turbolinks"=>false} do %>
           <div class="row">
               <div class="col-2">
-                <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+                <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", class: "profile-image-mini" %>
               </div>
               <div class="col-7 post-name">
                 <%= post.user.name %> Lv.<%= post.user.user_level %>
@@ -87,12 +87,12 @@
           <div class="col">
             <ul class="list-group list-group-horizontal">
               <%# いいね %>
-              <li class="list-group-item flex-fill" id="favorites_buttons_<%= post.id %>">
+              <li class="list-group-item  flex-fill d-flex justify-content-center" id="favorites_buttons_<%= post.id %>">
                 <%= render partial: 'favorites/favorite', locals: { post: post} %>
               </li>
               <%# ------- %>
               <%# コメント %>
-              <li class="list-group-item flex-fill">
+              <li class="list-group-item flex-fill d-flex justify-content-center">
                 <%= link_to post_path(post.id) do %>
                   <i class="far fa-comment-dots btn-outline-info"></i>
                   <%= post.comments.count %>
@@ -101,7 +101,7 @@
               <%# -------- %>
               <%# 削除 %>
               <% if post.user == current_user %>
-                <li class="list-group-item flex-fill">
+                <li class="list-group-item flex-fill d-flex justify-content-center">
                   <%= link_to post_path(post), method: :delete, class: 'btn-sm btn-outline-danger' do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>

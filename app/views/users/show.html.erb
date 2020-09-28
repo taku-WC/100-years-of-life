@@ -1,10 +1,10 @@
 <div class="container">
-  <h2><i class="fas fa-user"> プロフィール</i></h2>
+  <h4><i class="fas fa-user"> プロフィール</i></h4>
 
   <%# ユーザープロフィール %>
   <div class="row profile-outline">
     <div class="col-3">
-        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "150x150", class: "profile-image" %>
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", class: "profile-image" %>
     </div>
     <div class="col-9">
       <div class="profile-area">
@@ -56,14 +56,14 @@
         <div class="row">
           <div class="col-2"></div>
           <div class="col">
-            <ul class="list-group list-group-horizontal-md">
+            <ul class="list-group list-group-horizontal">
               <%# いいね %>
               <li class="list-group-item flex-fill" id="favorites_buttons_<%= post.id %>">
                 <%= render partial: 'favorites/favorite', locals: { post: post} %>
               </li>
               <%# ------- %>
               <%# コメント %>
-              <li class="list-group-item flex-fill">
+              <li class="list-group-item flex-fill d-flex justify-content-center">
                 <%= link_to post_path(post.id) do %>
                   <i class="far fa-comment-dots btn-outline-info"></i>
                   <%= post.comments.count %>
@@ -72,7 +72,7 @@
               <%# -------- %>
               <%# 削除 %>
               <% if post.user == current_user %>
-                <li class="list-group-item flex-fill">
+                <li class="list-group-item flex-fill d-flex justify-content-center">
                   <%= link_to post_path(post), method: :delete, class: 'btn-sm btn-outline-danger' do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
