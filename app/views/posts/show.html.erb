@@ -1,6 +1,6 @@
 <div class="container mb-5">
   <%# 投稿全体 %>
-  <div class="post-content">
+  <div class="post-content mb-4">
     <%# 投稿上部 %>
     <div class="row">
         <div class="col-2">
@@ -33,14 +33,14 @@
     <div class="row">
       <div class="col-2"></div>
       <div class="col">
-        <ul class="list-group list-group-horizontal-md">
+        <ul class="list-group list-group-horizontal">
           <%# いいね %>
           <li class="list-group-item flex-fill" id="favorites_buttons_<%= @post.id %>">
             <%= render partial: 'favorites/favorite', locals: { post: @post} %>
           </li>
           <%# ------- %>
           <%# コメント %>
-          <li class="list-group-item flex-fill">
+          <li class="list-group-item flex-fill d-flex justify-content-center">
             <%= link_to post_path(@post.id) do %>
               <i class="far fa-comment-dots btn-outline-info"></i>
               <%= @post.comments.count %>
@@ -49,7 +49,7 @@
           <%# -------- %>
           <%# 削除 %>
           <% if @post.user == current_user %>
-            <li class="list-group-item flex-fill">
+            <li class="list-group-item flex-fill d-flex justify-content-center">
               <%= link_to post_path(@post), method: :delete, class: 'btn-sm btn-outline-danger' do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
@@ -62,7 +62,7 @@
       <%# ---------------------------- %>
   </div>
   <%# コメント入力機能----------------- %>
-  <h4>コメント入力</h4>
+  <h5>コメント入力</h5>
   <div class="row mb-2">
     <div class="col">
       <%= form_with model:[@post, @comment], local: true do |f| %>
@@ -78,31 +78,36 @@
       <li class="list-group-item comment">
         <%# コメントしたユーザー情報 %>
         <div class="row">
-          <div class="col-3">
-            <div class="comment-profile">
+            <div class="col-2">
               <%= link_to user_path(comment.user) do %>
-                <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "profile-image-mini" %>
+                <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class: "comment-user-img" %>
               <% end %>
-              <%= comment.user.name %>
             </div>
-          </div>
-          <div class="col-7">
+            <div class="col-7">
+              <div class="comment-name">
+                <%= comment.user.name %>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="post-date">
+                <%= comment.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            </div>
+          <div class="col-2"></div>
+          <div class="col-10">
             <div class="comment-text">
               <%# コメント本文 %>
-              <%= comment.comment %>
+              <small><%= comment.comment %></small>
               <%# ------------ %>
             </div>
-          </div>
-          <div class="col-2">
-              <%# 日時 %>
-              <%= comment.created_at.strftime('%Y/%m/%d') %>
-              <%# ----- %>
               <%# コメント本人であれば削除を表示 %>
-                <% if @post.user == current_user %>
+              <div class="d-flex flex-row-reverse">
+                <% if comment.user == current_user %>
                   <%= link_to post_comment_path(comment.post, comment), class: 'btn-sm btn-outline-danger', method: :delete do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
                 <% end %>
+              </div>
               <%# ------------------------------ %>
           </div>
         </div>

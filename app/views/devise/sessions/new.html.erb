@@ -1,15 +1,11 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <%= link_to root_path do %>
-      <% image_tag"logo.jpg", :size =>'100x100', class: "logo-mini" %>
-    <% end %>
-  </div>
+<div class="container mt-3">
   <div class="row justify-content-md-center">
     <h4>ログイン</h4>
   </div>
   <div class="row justify-content-md-center">
-    <div class="form-body col-8">
+    <div class="form-body col">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
         <div class="form-group has-icon">
           <span class="fa fa-envelope form-control-icon" aria-hidden="true">　メールアドレス</span>
           <label class="control-label sr-only" for="inputEmail">Email</label>
@@ -20,7 +16,7 @@
           <label class="control-label sr-only" for="inputPassword">Password</label>
           <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
         </div>
-        <%= f.submit "ログイン", class:"btn btn-outline-success btn-lg btn-block btn-base-1 mt-20" %>
+        <%= f.submit "ログイン", class:"btn btn-success btn-lg btn-block btn-base-1 mt-20" %>
       <% end %>
     </div>
   </div>
