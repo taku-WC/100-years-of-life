@@ -41,6 +41,9 @@
                 <%= link_to new_user_session_path, class:"btn btn-success nav-item" do %>
                   <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
                 <% end %>
+                <%= link_to users_guest_sign_in_path, class:"btn btn-success nav-item", method: :post do %>
+                  <i class="fas fa-sign-in-alt nav-font"> ゲストログイン（閲覧用）</i>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -84,6 +87,9 @@
                 <% end %>
                 <%= link_to new_user_session_path, class:"btn btn-success nav-item" do %>
                   <i class="fas fa-sign-in-alt nav-font"> ログイン</i>
+                <% end %>
+                <%= link_to users_guest_sign_in_path, class:"btn btn-success nav-item", method: :post do %>
+                  <i class="fas fa-sign-in-alt nav-font"> ゲストログイン（閲覧用）</i>
                 <% end %>
               <% end %>
         </div>
