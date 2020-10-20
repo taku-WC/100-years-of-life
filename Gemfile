@@ -95,4 +95,6 @@ group :production do
   gem 'mysql2'
 end
 # jquery
-gem "jquery-rails"
+gem 'jquery-rails'
+# googleAPI
+gem 'omniauth-google-oauth2'
