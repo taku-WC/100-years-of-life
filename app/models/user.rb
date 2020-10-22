@@ -15,6 +15,6 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def self.guest
-    User.find(email: 'guest1@guest1')
+    User.find_by(email: 'guest1@guest1')
   end
 end
