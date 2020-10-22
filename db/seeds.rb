@@ -12,3 +12,10 @@
     threshold: 3*n
   )
 end
+
+User.create(
+  name: "guest",
+  email: "guest1@guest1",
+  password: "123456",
+  profile: "ポートフォリオをご覧頂きありがとうございます。ご自由にお使いください。"
+)
