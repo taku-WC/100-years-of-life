@@ -6,14 +6,12 @@ class CommentsController < ApplicationController
     @comment.post_id = post.id
     @comment.save
       if @comment.save
-      @user.experience +=1
-      @user.save
-
+        @user.experience +=1
+        @user.save
         levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
-
         if levelSetting.threshold <= @user.experience
-            @user.user_level = @user.user_level + 1
-            @user.update(user_level: @user.user_level)
+          @user.user_level = @user.user_level + 1
+          @user.update(user_level: @user.user_level)
         end
         redirect_to post_path(post)
       else

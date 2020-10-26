@@ -24,7 +24,6 @@ class User < ApplicationRecord
     unless user
       user = User.create!( 
         name: auth.info.name,
-        nickname: auth.info.name,
         email: auth.info.email,
         provider: auth.provider,
         uid: auth.uid,
