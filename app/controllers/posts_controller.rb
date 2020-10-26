@@ -27,11 +27,8 @@ class PostsController < ApplicationController
     @user = current_user
     @posts = Post.page(params[:page]).per(5).order("created_at DESC")
     if @post.save
-      experience = @user.experience
-      experience += 1
-
-      @user.experience = experience
-      @user.update(experience: experience)
+      @user.experience +=1
+      @user.save
 
       levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
 
