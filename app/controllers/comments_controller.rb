@@ -6,11 +6,8 @@ class CommentsController < ApplicationController
     @comment.post_id = post.id
     @comment.save
       if @comment.save
-        experience = @user.experience
-        experience += 1
-
-        @user.experience = experience
-        @user.update(experience: experience)
+      @user.experience +=1
+      @user.save
 
         levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
 
