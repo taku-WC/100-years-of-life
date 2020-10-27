@@ -26,7 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def search
+    @users = User.search(params[:search])
+    render "index"
   end
 
   private
