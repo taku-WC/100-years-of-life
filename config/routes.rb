@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get 'about', to: 'home#about'
+  get "search", to: "users#search"
 
   resources :users, only: [:index, :show, :edit, :update]
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

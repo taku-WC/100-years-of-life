@@ -22,7 +22,7 @@ class User < ApplicationRecord
   def self.find_for_google(auth)
     user = User.find_by(email: auth.info.email)
     unless user
-      user = User.create!( 
+      user = User.create!(
         name: auth.info.name,
         email: auth.info.email,
         provider: auth.provider,
@@ -32,5 +32,9 @@ class User < ApplicationRecord
         meta: auth.to_yaml)
     end
     user
+  end
+#検索機能
+  def self.search(search)
+    User.where(['name LIKE ?', "%#{search}%"])
   end
 end
