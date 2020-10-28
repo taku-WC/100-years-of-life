@@ -81,6 +81,11 @@ body {
 .edit-btn {
   text-align: right;
 }
+.fa-google{
+  color: #fff;
+  size: 20;
+  line-height: 45px;
+}
 .fixed_btn{
   position: fixed;
   width: 60px;
@@ -89,6 +94,13 @@ body {
   right: 10px;
   border-radius: 50%;
   z-index: 2
+}
+.google-log-bg{
+  height: 45px;
+  width: 80px;
+  background-color: rgb(221, 75, 57);
+  margin: 0 auto;
+  text-align: center;
 }
 .logo {
   width:100%;
