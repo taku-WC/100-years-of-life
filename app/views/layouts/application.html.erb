@@ -94,6 +94,9 @@
               <% end %>
         </div>
         <div class="col-md-9 main-content-color">
+          <% if flash[:notice] %>
+            <p class="alert alert-success"><%= flash[:notice] %></p>
+          <% end %>
           <%= yield %>
         </div>
       </div>

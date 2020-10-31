@@ -9,7 +9,7 @@
 10.times do |n|
   LevelSetting.create!(
     level: n-1,
-    threshold: 3*n
+    threshold: 2*n
   )
 end
 

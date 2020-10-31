@@ -44,6 +44,9 @@ group :development, :test do
     gem 'capistrano-rails'
     gem 'capistrano3-puma'
     gem 'capistrano-rbenv'
+    #rspec
+    gem 'rspec-rails', '~> 4.0.1'
+    gem 'factory_bot_rails'
 end
 
 group :development do
@@ -74,12 +77,6 @@ gem 'devise'
 # 画像アップロード
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-# 権限管理
-gem 'cancancan'
-# 管理画面
-gem 'rails_admin'
-# 検索機能
-gem 'ransack'
 # デザイン関係
 gem 'bootstrap', '~> 4.3.1'
 # Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails gem to your Gemfile'
@@ -98,3 +95,6 @@ end
 gem 'jquery-rails'
 # googleAPI
 gem 'omniauth-google-oauth2'
+#日本語化
+gem 'rails-i18n'
+
