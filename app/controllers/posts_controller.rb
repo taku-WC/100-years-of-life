@@ -1,20 +1,20 @@
 class PostsController < ApplicationController
-  def new
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if @post.save
-      @posts = Post.all
-      @user.experience +=1
-      @user.save
-      levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
-      if levelSetting.threshold <= @user.experience
-          @user.user_level = @user.user_level + 1
-          @user.update(user_level: @user.user_level)
-      end
-    else
-      render 'index'
-    end
-  end
+  # def new
+  #   @post = Post.new(post_params)
+  #   @post.user_id = current_user.id
+  #   if @post.save
+  #     @posts = Post.all
+  #     @user.experience +=1
+  #     @user.save
+  #     levelSetting = LevelSetting.find_by(level: @user.user_level + 1)
+  #     if levelSetting.threshold <= @user.experience
+  #         @user.user_level = @user.user_level + 1
+  #         @user.update(user_level: @user.user_level)
+  #     end
+  #   else
+  #     render 'index'
+  #   end
+  # end
 
   def create
     @post = Post.new(post_params)
