@@ -11,7 +11,8 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
 
   # バリデーション
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :profile, length: { maximum: 100 }
   validates :email, presence: true
 # ゲストログイン
   def self.guest

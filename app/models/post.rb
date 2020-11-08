@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   attachment :post_image
 
-  validates :post, presence: true
+  validates :post, presence: true, length: { maximum: 500}
 
   # 引数で渡されたユーザidがFavoritesテーブル内user_idカラムに存在（exists?）するかどうかを調べる
   def favorited_by?(user)
