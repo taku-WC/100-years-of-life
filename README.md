@@ -25,7 +25,10 @@ http://life-100years.work/
 
 ## 設計書
 ### 構成
-https://app.diagrams.net/?splash=0&libs=aws4#G1bXoRHeCqNRh3xye5RpYrFnsCH3UiFADX
+
+
+
+
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1bKxLX7qm-m3tgzgjXwuudsxWYzbvx8FwQeISluvVkYA/edit#gid=0
