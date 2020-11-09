@@ -25,10 +25,7 @@ http://life-100years.work/
 
 ## 設計書
 ### 構成
-
-
-
-
+<img width="415" alt="スクリーンショット 2020-11-09 19 46 49" src="https://user-images.githubusercontent.com/66808646/98535555-a65fd000-22c9-11eb-9a83-fbe26c18170c.png">
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1bKxLX7qm-m3tgzgjXwuudsxWYzbvx8FwQeISluvVkYA/edit#gid=0
