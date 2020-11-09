@@ -5,7 +5,7 @@
     <%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", size:"50x50", class: "profile-image" %>
     <div class="col">
       <%= form_with(model: @post, local: true) do |f| %>
-          <%= f.text_area :post, rows: "3", class: "col form-control", placeholder: "お金・友達・筋肉について語ろう" %>
+          <%= f.text_area :post, rows: "3", id: "post-form", class: "col form-control", placeholder: "お金・友達・筋肉について語ろう" %>
           <%= f.attachment_field :post_image, placeholder: "画像" %>
           <%= f.submit "投稿", class: "btn btn-outline-success col-xs-12 mt-2" %>
       <% end %>
