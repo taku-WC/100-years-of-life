@@ -24,6 +24,8 @@ http://life-100years.work/
 他人の頑張りを見て、影響を受けたり、行動の参考にしていきましょう。
 
 ## 設計書
+### 構成
+https://app.diagrams.net/?splash=0&libs=aws4#G1bXoRHeCqNRh3xye5RpYrFnsCH3UiFADX
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1bKxLX7qm-m3tgzgjXwuudsxWYzbvx8FwQeISluvVkYA/edit#gid=0
