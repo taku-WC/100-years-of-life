@@ -18,4 +18,8 @@ describe'投稿のテスト' do
     click_button '投稿'
     expect(page).to have_content "投稿テスト"
   end
+  it'投稿に失敗する' do
+    click_button'投稿'
+    expect(posts_path).to eq('/posts')
+  end
 end
