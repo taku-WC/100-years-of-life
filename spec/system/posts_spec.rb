@@ -29,19 +29,26 @@ describe'ホーム画面テスト' do
       visit posts_path
       expect(page).to have_content"ホーム"
     end
+    it 'ホームのリンク先が正しい' do
+      expect(page).to have_link'ホーム', href: posts_path
+    end
     it 'プロフィールが表示される' do
       visit posts_path
-      expect(page).to have_content"ホーム"
+      expect(page).to have_content"プロフィール"
+    end
+    it 'プロフィールのリンク先が正しい' do
+      expect(page).to have_link'プロフィール', href: user_path(user)
     end
     it 'メンバーズが表示される' do
       visit posts_path
-      expect(page).to have_content"ホーム"
+      expect(page).to have_content"メンバーズ"
+    end
+    it 'メンバーズのリンク先が正しい' do
+      expect(page).to have_link'メンバーズ', href: users_path
     end
     it 'ログアウトが表示される' do
       visit posts_path
-      expect(page).to have_content"ホーム"
+      expect(page).to have_content"ログアウト"
     end
   end
-
-  
 end
