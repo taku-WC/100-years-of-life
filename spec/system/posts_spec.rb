@@ -51,4 +51,13 @@ describe'ホーム画面テスト' do
       expect(page).to have_content"ログアウト"
     end
   end
+
+  context '投稿一覧の表示確認' do
+    it "ホームが表示される" do
+      expect(page).to have_content"ホーム"
+  end
+  it"自分と他人の画像リンクが正しい" do
+    expect(page).to have_link '', href: user_path(post.user)
+    expect(page).to have_link '', href: user_path(post.user2)
+  end
 end
