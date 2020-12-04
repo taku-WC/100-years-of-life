@@ -64,4 +64,7 @@ describe'ホーム画面テスト' do
     visit post_path post
     expect(page).to have_link '', href: post_path(post.user)
   end
+  it '他人の削除リンクは非表示' do
+    expect(page). to_no_link '', href: post_path(post.user2)
+  end
 end
